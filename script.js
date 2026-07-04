@@ -21,7 +21,7 @@
      
       function startQuiz()
       {
-        p.innerHTML="Quiz started !"
+        p.innerHTML="Quiz started !Now fetch"
       }
      
 
