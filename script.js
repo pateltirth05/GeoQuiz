@@ -31,8 +31,29 @@
 // console.log(response.data.objects);
 // console.log(response.data.objects.length);
          let randomindex=Math.floor(Math.random()*response.data.objects.length)
-         let countryindex=[randomindex]
-         console.log(countryindex)
+        let randomCountry = response.data.objects[randomindex];
+        console.log(randomCountry);
+        let img = document.getElementById("flag");
+        img.src=randomCountry.flag.url_svg;
+        let correctAnswer = randomCountry.names.common;
+        let options = [correctAnswer];
+        while(options.length<4){
+             let randomIndex = Math.floor(Math.random() * response.data.objects.length);
+              let randomName = response.data.objects[randomIndex].names.common;
+                 if (!options.includes(randomName)) {
+        options.push(randomName);
+    }
+    options.sort(() => Math.random() - 0.5);
+let optionContainer = document.getElementById("options");
+
+optionContainer.innerHTML = "";
+
+options.forEach((option) => {
+    optionContainer.innerHTML += `
+        <button>${option}</button>
+    `;
+});
+        }
       }
      
 
