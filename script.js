@@ -1,5 +1,6 @@
  
  let countries=[]
+ let correctAnswer=""
  function handleit()
 {
       let p=document.getElementById("start")
@@ -15,12 +16,12 @@
             clearInterval(timer)
             p.innerHTML="Go !"
             setTimeout(()=>{
-              handleit()
+              startCountdownFinished()
             },1000)
          }
          
       }, 1000);
-     function handleit(){
+     function startCountdownFinished(){
        p.innerHTML="Quiz started !"
       startQuiz()
      }
@@ -37,7 +38,7 @@
         console.log(randomCountry);
         let img = document.getElementById("flag");
         img.src=randomCountry.flag.url_svg;
-        let correctAnswer = randomCountry.names.common;
+         correctAnswer = randomCountry.names.common;
         let options = [correctAnswer];
         while(options.length<4){
              let randomIndex = Math.floor(Math.random() * response.data.objects.length);
@@ -58,6 +59,14 @@ options.forEach((option) => {
     `;
 });
       }
-     
+   
 
 }   
+  function checkAnswer(selectedAnswer){
+      if(selectedAnswer===correctAnswer){
+        console.log("correct")
+      }
+      else{
+        console.log("wrong")
+      }
+     }
