@@ -1,4 +1,6 @@
-   function handleit()
+ 
+ let countries=[]
+ function handleit()
 {
       let p=document.getElementById("start")
       let btn=document.getElementById("btn").style.display='none'
@@ -43,17 +45,18 @@
                  if (!options.includes(randomName)) {
         options.push(randomName);
     }
-    options.sort(() => Math.random() - 0.5);
+  
+        }
+          options.sort(() => Math.random() - 0.5);
 let optionContainer = document.getElementById("options");
 
 optionContainer.innerHTML = "";
 
 options.forEach((option) => {
     optionContainer.innerHTML += `
-        <button>${option}</button>
+        <button onclick="checkAnswer('${option}')">${option}</button>
     `;
 });
-        }
       }
      
 
