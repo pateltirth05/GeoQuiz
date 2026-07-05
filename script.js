@@ -1,6 +1,7 @@
  
  let countries=[]
  let correctAnswer=""
+ let score=0
  function handleit()
 {
       let p=document.getElementById("start")
@@ -21,28 +22,37 @@
          }
          
       }, 1000);
-     function startCountdownFinished(){
+     
+   function startCountdownFinished(){
        p.innerHTML="Quiz started !"
       startQuiz()
      }
-     async function startQuiz()
+   
+
+}  
+
+  async function startQuiz()
       {
-       
-        let countryData=await fetch("https://api.restcountries.com/countries/v5",{headers:{'Authorization':'Bearer rc_live_a200429ed56e4b7f8f16cdf5d21c2e50'}})
+       if(countries.length===0){
+   let countryData=await fetch("https://api.restcountries.com/countries/v5",{headers:{'Authorization':'Bearer rc_live_a200429ed56e4b7f8f16cdf5d21c2e50'}})
         let response=await countryData.json()
+
+        countries=response.data.objects
+       }
+     
 //        console.log(response.data);
 // console.log(response.data.objects);
 // console.log(response.data.objects.length);
-         let randomindex=Math.floor(Math.random()*response.data.objects.length)
-        let randomCountry = response.data.objects[randomindex];
+         let randomindex=Math.floor(Math.random()*countries.length)
+        let randomCountry = countries[randomindex];
         console.log(randomCountry);
         let img = document.getElementById("flag");
         img.src=randomCountry.flag.url_svg;
          correctAnswer = randomCountry.names.common;
         let options = [correctAnswer];
         while(options.length<4){
-             let randomIndex = Math.floor(Math.random() * response.data.objects.length);
-              let randomName = response.data.objects[randomIndex].names.common;
+             let randomIndex = Math.floor(Math.random() * countries.length);
+              let randomName = countries[randomIndex].names.common;
                  if (!options.includes(randomName)) {
         options.push(randomName);
     }
@@ -58,15 +68,15 @@ options.forEach((option) => {
         <button onclick="checkAnswer('${option}')">${option}</button>
     `;
 });
-      }
-   
-
-}   
+      } 
   function checkAnswer(selectedAnswer){
       if(selectedAnswer===correctAnswer){
-        console.log("correct")
+        score++;
+        console.log(score)
       }
       else{
         console.log("wrong")
       }
+      startQuiz()
      }
+     
