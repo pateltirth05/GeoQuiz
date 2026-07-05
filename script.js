@@ -2,6 +2,8 @@
  let countries=[]
  let correctAnswer=""
  let score=0
+ let currentQuestion=1;
+ let totalQuestions=10
  function handleit()
 {
       let p=document.getElementById("start")
@@ -33,6 +35,8 @@
 
   async function startQuiz()
       {
+        document.getElementById("question").innerHTML =
+`Question ${currentQuestion} / ${totalQuestions}`;
        if(countries.length===0){
    let countryData=await fetch("https://api.restcountries.com/countries/v5",{headers:{'Authorization':'Bearer rc_live_a200429ed56e4b7f8f16cdf5d21c2e50'}})
         let response=await countryData.json()
@@ -45,6 +49,7 @@
 // console.log(response.data.objects.length);
          let randomindex=Math.floor(Math.random()*countries.length)
         let randomCountry = countries[randomindex];
+        countries.splice(randomindex,1)
         console.log(randomCountry);
         let img = document.getElementById("flag");
         img.src=randomCountry.flag.url_svg;
@@ -76,6 +81,11 @@ options.forEach((option) => {
       }
       else{
         console.log("wrong")
+      }
+      currentQuestion++;
+      if(currentQuestion>totalQuestions){
+        alert(`Quiz Finished\n Score:${score}/${totalQuestions}`);
+        return
       }
       startQuiz()
      }
