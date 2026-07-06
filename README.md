@@ -46,7 +46,23 @@ This project helped me practice:
 
 ## 📸 Preview
 
-Coming Soon...
+## Screenshots
+
+### Home
+
+![Home](screenshots/home.png)
+
+### Quiz
+
+![Quiz](screenshots/playing.png)
+
+### Playing
+
+![Playing](screenshots/score_showing.png)
+
+### Result
+
+![Result](screenshots/score.png)
 
 ## 📄 License
 
