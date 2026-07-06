@@ -44,7 +44,7 @@
 `Question ${currentQuestion} / ${totalQuestions}`;
 document.getElementById("score").innerHTML=`Score : ${score}`
        if(countries.length===0){
-   let countryData=await fetch("https://api.restcountries.com/countries/v5",{headers:{'Authorization':'Bearer rc_live_a200429ed56e4b7f8f16cdf5d21c2e50'}})
+   let countryData=await fetch("https://api.restcountries.com/countries/v5",{headers:{'Authorization':'Bearer addyourheader here from api'}})
         let response=await countryData.json()
 
         countries=response.data.objects
