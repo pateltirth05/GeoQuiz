@@ -1,0 +1,162 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* Body */
+
+body{
+    background:#F5F7FA;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+/* Quiz Card */
+
+.quiz,
+#result{
+    background:#fff;
+    width:100%;
+    max-width:520px;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+/* Heading */
+
+h1{
+    color:#1F2937;
+    font-size:2rem;
+    margin-bottom:20px;
+}
+
+h2{
+    color:#1F2937;
+    margin-bottom:20px;
+}
+
+/* Question & Score */
+
+#question,
+#score{
+    color:#6B7280;
+    font-size:1rem;
+    margin:10px 0;
+}
+
+/* Countdown */
+
+#start{
+    font-size:3rem;
+    font-weight:700;
+    color:#2563EB;
+    margin:20px 0;
+}
+
+/* Flag */
+
+#flag{
+    width:220px;
+    height:150px;
+    object-fit:cover;
+    border:1px solid #ddd;
+    border-radius:10px;
+    margin:20px auto;
+    display:block;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+/* Options */
+
+#options{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    margin-top:20px;
+}
+
+#options button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#2563EB;
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+    transition:.2s;
+}
+
+#options button:hover{
+    background:#1D4ED8;
+    transform:translateY(-2px);
+}
+
+/* Main Buttons */
+
+#btn,
+#result button{
+    margin-top:20px;
+    width:220px;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#2563EB;
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+    transition:.2s;
+}
+
+#btn:hover,
+#result button:hover{
+    background:#1D4ED8;
+    transform:translateY(-2px);
+}
+
+/* Result */
+
+#finalScore,
+#accuracy{
+    font-size:1.1rem;
+    margin:12px 0;
+    color:#374151;
+}
+
+/* Responsive */
+
+@media(max-width:600px){
+
+    .quiz,
+    #result{
+        padding:20px;
+    }
+
+    h1{
+        font-size:1.6rem;
+    }
+
+    #flag{
+        width:180px;
+        height:120px;
+    }
+.top-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:15px 0;
+    font-weight:600;
+}
+}

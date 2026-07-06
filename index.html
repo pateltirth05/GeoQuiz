@@ -4,14 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeoQUiz</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+     <div class="quiz" id="quiz">
     <h1>Geography Flag Quiz</h1>
+   
     <button onclick="handleit()" id="btn">Start now</button>
     <p id="start"></p>
+    <div class="top-bar">
     <p id="question"></p>
+    <p id="score"></p>
+</div>
     <img id="flag" alt="flag"/>
     <div id="options"></div>
+
+    </div>
+    <div id="result" style="display:none;">
+    <h2>Quiz Completed 🎉</h2>
+
+    <p id="finalScore"></p>
+   <p id="accuracy"></p>
+    <button onclick="restartQuiz()">
+        Play Again
+    </button>
+</div>
     <script>
       </script>
 <script src="script.js"></script>

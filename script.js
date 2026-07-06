@@ -4,11 +4,15 @@
  let score=0
  let currentQuestion=1;
  let totalQuestions=10
+   let img = document.getElementById("flag");
+   img.style.display='none'
  function handleit()
 {
       let p=document.getElementById("start")
       let btn=document.getElementById("btn").style.display='none'
      // p.innerHTML="Quiz will start in few minutes"
+    
+    
       let count=2
       let timer=setInterval(() => {
         
@@ -35,8 +39,10 @@
 
   async function startQuiz()
       {
+        img.style.display='block'
         document.getElementById("question").innerHTML =
 `Question ${currentQuestion} / ${totalQuestions}`;
+document.getElementById("score").innerHTML=`Score : ${score}`
        if(countries.length===0){
    let countryData=await fetch("https://api.restcountries.com/countries/v5",{headers:{'Authorization':'Bearer rc_live_a200429ed56e4b7f8f16cdf5d21c2e50'}})
         let response=await countryData.json()
@@ -51,7 +57,7 @@
         let randomCountry = countries[randomindex];
         countries.splice(randomindex,1)
         console.log(randomCountry);
-        let img = document.getElementById("flag");
+       
         img.src=randomCountry.flag.url_svg;
          correctAnswer = randomCountry.names.common;
         let options = [correctAnswer];
@@ -84,9 +90,20 @@ options.forEach((option) => {
       }
       currentQuestion++;
       if(currentQuestion>totalQuestions){
-        alert(`Quiz Finished\n Score:${score}/${totalQuestions}`);
+        // alert(`Quiz Finished\n Score:${score}/${totalQuestions}`);
+        document.getElementById("quiz").style.display="none"
+        document.getElementById("result").style.display="block"
+        document.getElementById("finalScore").innerHTML =
+`Score : ${score} / ${totalQuestions}`;
+    let accuracy=(score/totalQuestions)*100
+    document.getElementById("accuracy").innerHTML =
+`Accuracy : ${accuracy}%`;
+      
         return
       }
       startQuiz()
      }
-     
+    
+     function restartQuiz(){
+   location.reload()
+     }
